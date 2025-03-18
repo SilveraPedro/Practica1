@@ -27,8 +27,8 @@ correct_answers_index = [1, 2, 0, 3, 1]
 # Inicializo la variable puntaje en 0 para luego sumar y restar
 puntos = float(0)
 
-# Se eligen tres preguntas aleatorias ( se pueden repetir ) para el quiz
-questions_to_ask = random.choices(list(zip(questions,  answers, correct_answers_index)), k=3)
+# creo una lista de tuplas la cual elige tres preguntas aleatorias ( gracias al .sample no se repetiran ) para el quiz
+questions_to_ask = random.sample (list(zip(questions,  answers, correct_answers_index)), k=3)
 
 # El usuario deberá contestar 3 preguntas
 for question, answer_option , correct_answers in questions_to_ask:
