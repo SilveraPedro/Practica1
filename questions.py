@@ -23,7 +23,8 @@ answers = [
 ]
 # Índice de la respuesta correcta para cada pregunta, el el mismo orden que las preguntas
 correct_answers_index = [1, 2, 0, 3, 1]
-
+# Inicializo la variable puntaje en 0 para luego sumar y restar
+puntos = float(0)
 # El usuario deberá contestar 3 preguntas
 for _ in range(3):
     # Se selecciona una pregunta aleatoria
@@ -33,7 +34,7 @@ for _ in range(3):
     print(questions[question_index])
     for i, answer in enumerate(answers[question_index]):
         print(f"{i + 1}. {answer}")
-        
+
     # El usuario tiene 2 intentos para responder correctamente
     for intento in range(2):
         user_answer = (input("Respuesta: "))  
@@ -51,11 +52,19 @@ for _ in range(3):
         # Se verifica si la respuesta es correcta
         if user_answer == correct_answers_index[question_index]:
             print("¡Correcto!")
+            # Se le suma uno a la variable puntaje 
+            puntos = puntos + 1
             break
+        else:
+            # Se le resta cero punto cinco a la variable Puntaje ya que es una respuesta incorrecta
+            puntos = puntos - 0.5
     else:
         # Si el usuario no responde correctamente después de 2 intentos,
         # se muestra la respuesta correcta
         print("Incorrecto. La respuesta correcta es:")
         print(answers[question_index][correct_answers_index[question_index]])
+
     # Se imprime un blanco al final de la pregunta
     print()
+# Se imprimen la cantidad de puntos totales que obtubo al final del quizz
+print("Su puntaje final es ",puntos)
