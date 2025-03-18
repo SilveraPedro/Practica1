@@ -33,10 +33,21 @@ for _ in range(3):
     print(questions[question_index])
     for i, answer in enumerate(answers[question_index]):
         print(f"{i + 1}. {answer}")
-
+        
     # El usuario tiene 2 intentos para responder correctamente
     for intento in range(2):
-        user_answer = int(input("Respuesta: ")) - 1
+        user_answer = (input("Respuesta: "))  
+        # Se corrobora que sea un numero entero
+        if(not user_answer.isdigit() ): 
+            # Si no es un entero imprime lo pedido y termina con el programa
+            print("Respuesta no valida")
+            exit(1)
+        # Si se ingresa un numero entero a este se le resta uno para asi poder comparar con el rango de respuestas 
+        user_answer = int(user_answer)-1
+        # Se corrobora que el numero entero ingresado este en el rango de  0=<ans<=3
+        if user_answer < 0 or user_answer > 3:
+            print("Respuesta no valida")
+            exit(1)
         # Se verifica si la respuesta es correcta
         if user_answer == correct_answers_index[question_index]:
             print("¡Correcto!")
@@ -46,6 +57,5 @@ for _ in range(3):
         # se muestra la respuesta correcta
         print("Incorrecto. La respuesta correcta es:")
         print(answers[question_index][correct_answers_index[question_index]])
-
     # Se imprime un blanco al final de la pregunta
     print()
